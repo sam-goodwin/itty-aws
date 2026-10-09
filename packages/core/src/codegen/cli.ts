@@ -23,7 +23,7 @@ import { formatGenerated } from "./format.ts";
 import { stampGeneratedAt } from "./generated-at.ts";
 import { generateService, type SdkSpec } from "./generator.ts";
 import { toLatin1 } from "./latin1.ts";
-import { privatizeSchemas } from "./privatize.ts";
+import { privatizeSchemas, typeOnlyNamespaceImports } from "./privatize.ts";
 import { annotateNestedCalls } from "./pure.ts";
 import { tableSchemas } from "./table.ts";
 
@@ -200,13 +200,16 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
           const resourceFile = `${resource}.ts`;
           const marked = annotateNestedCalls(generated.code, resourceFile);
           const code = toLatin1(
-            tableSchemas(
-              chunkSchemas(
-                privatizeSchemas(dedupeSchemas(marked, resourceFile).code, resourceFile).code,
+            typeOnlyNamespaceImports(
+              tableSchemas(
+                chunkSchemas(
+                  privatizeSchemas(dedupeSchemas(marked, resourceFile).code, resourceFile).code,
+                  resourceFile,
+                ).code,
                 resourceFile,
               ).code,
               resourceFile,
-            ).code,
+            ),
             resourceFile,
           );
 

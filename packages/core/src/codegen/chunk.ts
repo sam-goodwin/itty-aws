@@ -130,7 +130,11 @@ export const chunkSchemas = (
   }
   const lastImport = [...body].reverse().find((s) => s.type === "ImportDeclaration");
   const at = lastImport ? lastImport.end : 0;
-  out = `${out.slice(0, at)}\nimport * as __L from "@distilled.cloud/core/chunks";${out.slice(at)}`;
+  // Modules on lite schemas take `at` from schema-lite (lazy lite nodes).
+  const helper = code.includes('"@distilled.cloud/core/schema-lite"')
+    ? "@distilled.cloud/core/schema-lite"
+    : "@distilled.cloud/core/chunks";
+  out = `${out.slice(0, at)}\nimport * as __L from "${helper}";${out.slice(at)}`;
   out +=
     "\n// Schema builders: each runs one schema initializer, on that schema's first use.\n" +
     cases

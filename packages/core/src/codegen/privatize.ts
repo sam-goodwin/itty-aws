@@ -153,3 +153,27 @@ export const privatizeSchemas = (
   }
   return { code: out, privatized: live.size, removed };
 };
+
+/**
+ * `import * as X` whose namespace is used only in type positions becomes
+ * `import type * as X`. The generator's `oxlint --fix` otherwise deletes it
+ * as unused once the schema consts that used it as a value are gone, and the
+ * types that still name it stop compiling.
+ */
+export const typeOnlyNamespaceImports = (code: string, filename = "generated.ts"): string => {
+  const program = parseAst(code, { sourceType: "module", lang: "ts" }, filename);
+  const body = program.body as unknown as Node[];
+  const used = new Set<string>();
+  for (const st of body) if (st.type !== "ImportDeclaration") valueRefs(st, used);
+  let out = code;
+  for (const st of [...body].reverse()) {
+    if (st.type !== "ImportDeclaration" || st.importKind === "type") continue;
+    const specs = st.specifiers as Node[];
+    if (specs.length !== 1 || specs[0]!.type !== "ImportNamespaceSpecifier") continue;
+    const name = (specs[0]!.local as Node).name as string;
+    if (used.has(name)) continue;
+    const text = code.slice(st.start, st.end).replace(/^import \*/, "import type *");
+    out = out.slice(0, st.start) + text + out.slice(st.end);
+  }
+  return out;
+};
